@@ -169,28 +169,8 @@
 
 			var angle = a.angleTo(b);
 
-			// console.log(angle);
-
-			if (angle > Math.PI - 0.01 && angle < Math.PI + 0.01) {
-				// Unneccesary vertex
-				// console.log("Unneccesary vertex: ", polygon.vertexIds[i]);
-				// console.log("Angle between "+previousVertexId+", "+polygon.vertexIds[i]+" "+nextVertexId+" was: ", angle);
-
-
-				// Remove the neighbours who had this vertex
-				var goodNeighbours = [];
-				_.each(polygon.neighbours, function (neighbour) {
-					if (!_.contains(neighbour.vertexIds, polygon.vertexIds[i])) {
-						goodNeighbours.push(neighbour);
-					}
-				});
-				polygon.neighbours = goodNeighbours;
-
-
-				// TODO cleanup the list of vertices and rebuild vertexIds for all polygons
-			} else {
-				newVertexIds.push(polygon.vertexIds[i]);
-			}
+			//removed a ton of cleanup operations
+			newVertexIds.push(polygon.vertexIds[i]);
 
 		}
 
@@ -475,7 +455,7 @@
 							centroid: polygon.centroid.clone()
 						};
 
-						cleanPolygon(testPolygon, navigationMesh);
+						//cleanPolygon(testPolygon, navigationMesh);
 
 						if (isConvex(testPolygon, navigationMesh)) {
 							otherPolygon.toBeDeleted = true;
@@ -506,7 +486,7 @@
 							// console.log(polygon.vertexIds);
 							// console.log("Merge!");
 
-							cleanPolygon(polygon, navigationMesh);
+							//cleanPolygon(polygon, navigationMesh);
 
 							keepLooking = true;
 						}
